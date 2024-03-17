@@ -1,13 +1,6 @@
-version: 1.0.{build}
-  build_cloud:
-  - Docker
-  image: net6.0
-  configuration: Release
-  
-# 构建脚本
+version: 1.0.{build}  
+configuration: Release 
 build_script:
-  - dotnet restore
-  - dotnet build -c Release
-
+- ps: dotnet build "HelloWorldWebApp.csproj"
 test_script:
-- ps: dotnet test
+- ps: dotnet test "HelloWorldWebApp.csproj" --configuration Release--no-build
