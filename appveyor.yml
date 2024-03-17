@@ -1,4 +1,4 @@
-image: Visual Studio 2019
+image: net6.0
 
 environment:
   matrix:
@@ -13,9 +13,6 @@ dotnet_csproj:
   file: '**/*.csproj'
   version: '{version}.{build}'
 
-# 安装阶段：安装 .NET Core SDK
-install:
-  - ps: Install-Dotnet
 
 # 构建脚本
 build_script:
