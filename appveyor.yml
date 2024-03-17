@@ -1,8 +1,11 @@
 version: 1.0.{build}  
-  build_cloud:    
-  - Docker
-  image: net6.0 
-  configuration: Release 
+configuration: Release 
 
 build_script:
-- ps: dotnet publish "HelloWorldWebApp.csproj" -c Release -o /tmp
+- ps: dotnet build "HelloWorldWebApp.csproj"
+- ps: dotnet publish "HelloWorldWebApp.csproj" --configuration Release --output "./publish"
+
+
+artifacts:
+  - path: publish\**\*  # 收集发布目录下的所有文件
+    name: HelloWorldWebApp
