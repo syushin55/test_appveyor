@@ -1,0 +1,27 @@
+image: Visual Studio 2019
+
+environment:
+  matrix:
+    - ASPNETCORE_ENVIRONMENT: Development
+
+# 可选：克隆整个Git仓库历史
+clone_depth: 1
+
+# .NET Core 版本配置
+dotnet_csproj:
+  patch: true
+  file: '**/*.csproj'
+  version: '{version}.{build}'
+
+# 安装阶段：安装 .NET Core SDK
+install:
+  - ps: Install-Dotnet
+
+# 构建脚本
+build_script:
+  - dotnet restore
+  - dotnet build -c Release
+
+# 测试脚本：运行测试（如果有）
+test_script:
+  - dotnet test
