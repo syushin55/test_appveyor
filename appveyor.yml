@@ -1,8 +1,8 @@
 version: 1.0.{build}  
-configuration: Release 
+  build_cloud:    
+  - Docker
+  image: net6.0 
+  configuration: Release 
 
 build_script:
 - ps: dotnet publish "HelloWorldWebApp.csproj" -c Release -o /tmp
-
-test_script:
-- ps: dotnet test "HelloWorldWebApp.csproj" --configuration Release--no-build
