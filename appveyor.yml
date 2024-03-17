@@ -1,5 +1,8 @@
-version: 1.0.{build}  
-configuration: Release 
+version: 1.0.{build}
+  build_cloud:
+  - Docker
+  image: net6.0
+  configuration: Release 
 build_script:
 - ps: dotnet build "HelloWorldWebApp.csproj"
 test_script:
