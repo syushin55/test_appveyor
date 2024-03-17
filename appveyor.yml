@@ -2,7 +2,7 @@ version: 1.0.{build}
 configuration: Release 
 
 build_script:
-- ps: dotnet build "HelloWorldWebApp.csproj"
+- ps: dotnet publish "HelloWorldWebApp.csproj" -c Release -o /tmp
 
 test_script:
 - ps: dotnet test "HelloWorldWebApp.csproj" --configuration Release--no-build
