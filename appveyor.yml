@@ -1,12 +1,13 @@
 version: 1.0.{build}
-  build_cloud: #这里选择构建的类型  
-  - Docker  
-  image: net6.0 # 这里选择构建的镜像  
+  build_cloud:
+  - Docker
+  image: net6.0
   configuration: Release
   
-build:
-  project: HelloWorldWebApp.csproj
-  verbosity: minimal
+# 构建脚本
+build_script:
+  - dotnet restore
+  - dotnet build -c Release
 
 test_script:
 - ps: dotnet test
