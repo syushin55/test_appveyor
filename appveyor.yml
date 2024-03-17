@@ -1,24 +1,12 @@
-image: net6.0
+version: 1.0.{build}
+  build_cloud: #这里选择构建的类型  
+  - Docker  
+  image: net6.0 # 这里选择构建的镜像  
+  configuration: Release
+  
+build:
+  project: HelloWorldWebApp.csproj
+  verbosity: minimal
 
-environment:
-  matrix:
-    - ASPNETCORE_ENVIRONMENT: Development
-
-# 可选：克隆整个Git仓库历史
-clone_depth: 1
-
-# .NET Core 版本配置
-dotnet_csproj:
-  patch: true
-  file: '**/*.csproj'
-  version: '{version}.{build}'
-
-
-# 构建脚本
-build_script:
-  - dotnet restore
-  - dotnet build -c Release
-
-# 测试脚本：运行测试（如果有）
 test_script:
-  - dotnet test
+- ps: dotnet test
