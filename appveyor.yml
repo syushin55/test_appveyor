@@ -1,10 +1,8 @@
 version: 1.0.{build}  
-  build_cloud:    #这里选择构建的类型
-  - Docker
+configuration: Release 
 
-  image: net6.0   # 这里选择构建的镜像
-
-  configuration: Release 
+build_script:
+- ps: dotnet build "HelloWorldWebApp.csproj"
 
 test_script:
-  - ps: dotnet test "HelloWorldWebApp.csproj" --configuration Release--no-build
+- ps: dotnet test "HelloWorldWebApp.csproj" --configuration Release--no-build
